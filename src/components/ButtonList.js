@@ -2,7 +2,19 @@ import React from 'react'
 
 const ButtonList = () => {
   return (
-    <div>ButtonList</div>
+    <div className='flex gap-8 h-14 items-center'>
+        <li>Button </li>
+        <li> Button</li>
+        <li>Button </li>
+        <li> Button</li>
+        <li>Button </li>
+        <li> Button</li>
+        <li>Button </li>
+        <li>Button </li>
+        <li> Button</li>
+        <li>Button </li>
+        <li> Button</li>
+    </div>
   )
 }
 

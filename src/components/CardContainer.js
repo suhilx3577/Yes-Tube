@@ -1,8 +1,15 @@
 import React from 'react'
-
+import Card from './Card'
 const CardContainer = () => {
   return (
-    <div>CardContainer</div>
+    <div className='grid grid-cols-3 gap-2'>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </div>
   )
 }
 
