@@ -4,7 +4,7 @@ const Watch = () => {
   return (
     <>
       <div className='h-16'>
-        Fixing Navbar
+        Fixing Navbar 
       </div>
       <div className='bg-slate-500 p-10w-screen h-screen'>
       <div>
