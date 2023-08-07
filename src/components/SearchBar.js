@@ -15,7 +15,7 @@ const SearchBar = () => {
   useEffect(()=>{
     let timer = setTimeout(()=>{
       getSuggestion(searchQ)
-    },400)
+    },200)
 
     return ()=>{
       clearTimeout(timer)
@@ -24,18 +24,16 @@ const SearchBar = () => {
 
   return (
     <div>
-        <input className='py-2 px-4 w-96 rounded-l-full text-black' onKeyUp={(e)=>{
+        <input className='py-2 px-4 w-96 rounded-l-full text-black focus:outline-none' onKeyUp={(e)=>{
           setSearchQ(e.target.value)
         }} type="text" />
         <button className='bg-white py-2 px-4 rounded-r-full text-black border border-black' >SEARCH</button>
         {
           data && 
-          <div className='w-96 h-96 bg-gray-400 fixed  ml-[1rem]'>
-            {
-              data.map((detail,i)=>{
-                <li key={i}> {detail}</li>
-              })
-            }
+          <div className='rounded-b-lg w-[368px] h-min bg-gray-400 absolute  ml-[1rem] text-black'>
+            {data.map((detail,i)=>
+            <ul className='px-2 py-1 '>{detail}</ul>
+            )}
           </div>
         }
     </div>

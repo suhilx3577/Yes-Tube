@@ -24,3 +24,6 @@ Tailwind Set Up
     
     5)  Now you are all set to use the Tailwindcss
 
+
+
+install dotenv for Private Keys and URLs

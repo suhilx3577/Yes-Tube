@@ -8,18 +8,18 @@ import {BiMusic} from 'react-icons/bi'
 import {GiHamburgerMenu} from 'react-icons/gi'
 const Navbar = () => {
 
-  const [sideBar, setSideBar] = useState(false)
+  const [sideBar, setSideBar] = useState(true)
 
   return (
-    <div className='relative'>
-      <div className='h-16 sticky w-full bg-slate-800 flex justify-between items-center px-6 py-2 text-white'>
+    <div className=''>
+      <div className={'h-16 fixed w-full bg-slate-800 flex justify-between items-center px-6 py-2 text-white'}>
         <div className='flex gap-5'>
           <ul onClick={()=>{
             setSideBar(!sideBar)
+            console.log(sideBar)
           }}>
           <GiHamburgerMenu size={26}/>
           </ul>
-
           <ul>logo</ul>
         </div>
         <SearchBar />
@@ -29,7 +29,7 @@ const Navbar = () => {
           <ul>user</ul>
         </div>
       </div>
-      <div className={ ' fixed bg-slate-800 min-h-screen w-52 '+ `${sideBar? '' : 'ml-[-230px]'}`}>
+      <div className={ 'fixed mt-16 bg-slate-200 min-h-screen w-52 ml-[-240px] z-10 '+ `${sideBar? '' : 'translate-x-60'}`+' duration-150 transition ease-out'  }>
         sideBar
       </div>
     </div>
