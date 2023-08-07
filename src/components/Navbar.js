@@ -6,6 +6,7 @@ import {BsFillCollectionPlayFill} from 'react-icons/bs'
 import {PiFilmReelLight} from 'react-icons/pi'
 import {BiMusic} from 'react-icons/bi'
 import {GiHamburgerMenu} from 'react-icons/gi'
+import { Link } from 'react-router-dom'
 const Navbar = () => {
 
   const [sideBar, setSideBar] = useState(true)
@@ -20,7 +21,9 @@ const Navbar = () => {
           }}>
           <GiHamburgerMenu size={26}/>
           </ul>
-          <ul>logo</ul>
+          <Link to='/'>
+            <ul>logo</ul>
+          </Link>
         </div>
         <SearchBar />
         <div className='flex gap-8'>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
+import { Link } from 'react-router-dom';
 const CardContainer = () => {
 
   const [ data, setData] = useState('')
@@ -15,12 +16,15 @@ const CardContainer = () => {
     fetchData()
   },[])
 
+
   return (
     <div className='grid grid-cols-3 gap-2 mt-2'>
       {
         data &&
         data?.map((item)=>(
-          <Card key={item.id} data={item.snippet} stats={item.statistics}/>
+          <Link key={item.id} to={`/watch?v=${item.id}&c=${item?.snippet?.channelId}`}>
+          <Card key={item.id} data={item.snippet} stats={item.statistics}/> 
+          </Link>
         ))
       }
     </div>

@@ -2,10 +2,6 @@ import React, { useEffect } from 'react'
 import { get_time_diff } from '../utils/helpers';
 
 const Card = ({data,stats}) => {
-    // console.log(data)
-    // useEffect(()=>{
-    //     // const data = fetch('https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw&key='+process.env.YOUTUBE_API_KEY)
-    // },[])
 
     const pub = get_time_diff(data.publishedAt)
     console.log(pub)
