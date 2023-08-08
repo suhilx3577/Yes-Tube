@@ -16,7 +16,7 @@ const VideoDetails = () => {
     async function getChannelDetail () {
       const d = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2Cstatistics%2CcontentDetails&id=${cid}&key=${process.env.YOUTUBE_API_KEY}`)
       const data = await d.json();
-      setchannel(data.items[0])
+      setchannel(data?.items[0])
     }
     useEffect(()=>{
       getChannelDetail();

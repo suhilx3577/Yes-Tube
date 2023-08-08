@@ -8,7 +8,7 @@ const MajorWatch = () => {
 
 
   return (
-    <div className='col-span-7'>
+    <div className='col-span-8'>
       <div>
         <iframe width="650" height="380"
           src={"https://www.youtube.com/embed/"+param.get('v')}
