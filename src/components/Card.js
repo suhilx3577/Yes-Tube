@@ -4,7 +4,6 @@ import { get_time_diff } from '../utils/helpers';
 const Card = ({data,stats}) => {
 
     const pub = get_time_diff(data.publishedAt)
-    console.log(pub)
 
   return (
     <div className='w-[349px] h-[319px] border-white bg-slate-800 text-white hover:cursor-pointer' >

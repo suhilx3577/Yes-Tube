@@ -22,7 +22,8 @@ const CardContainer = () => {
       {
         data &&
         data?.map((item)=>(
-          <Link key={item.id} to={`/watch?v=${item.id}&c=${item?.snippet?.channelId}`}>
+          // <Link key={item.id} to={`/watch?v=${item.id}&c=${item?.snippet?.channelId}`}>
+          <Link key={item.id} to={`/watch?v=${item.id}`}>
           <Card key={item.id} data={item.snippet} stats={item.statistics}/> 
           </Link>
         ))

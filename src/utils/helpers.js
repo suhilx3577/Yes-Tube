@@ -22,7 +22,14 @@ export function get_time_diff( datetime )
     var answer=""
 
     if(days){
+        let month =0, years=0;
+        month = Math.floor(days/30) ;
+        years = Math.floor(month/12) ;
+
+        if(years>=1) return `${years} year `
+        else if(month>=1) return `${month} months `
         if(days==1) return "a day "
+        if(days/30 >= 1) return 
         answer+=days + " days ";
         return answer
     }

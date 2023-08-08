@@ -1,19 +1,18 @@
 import React from 'react'
+import { get_time_diff } from '../utils/helpers'
+
 
 const SugCard = ({data}) => {
-    console.log(data)
+    const date = get_time_diff(data?.publishTime)
     return (
-        <div className='w-full h-32 bg-red-600 flex flex-row justify-start gap-2'>
+        <div className='w-full h-32 bg-slate-800 flex flex-row justify-start gap-2'>
             <div className='h-full w-52 rounded-lg bg-pink-300 overflow-hidden'>
-                <img src={data?.thumbnails?.maxres?.url} className="w-52 h-full rounded-lg object-fill" alt="" />
+                <img src={data?.thumbnails?.high?.url} className="w-52 h-full scale-y-150 rounded-lg object-fill" alt="" />
             </div>
-            <div className='max-w-[100px]'>
-                <p className='line-clamp-2 font-bold text-sm overflow-hidden'>{data?.title}</p>
-                <p>{data?.channelTitle}</p>
-                <div>
-                    <p>Views </p>
-                    <p>Publish</p>
-                </div>
+            <div className='max-w-[150px] py-2'>
+                <p className='line-clamp-2 font-bold text-white text-sm overflow-hidden'>{data?.title}</p>
+                <p className='text-sm mt-2 text-gray-400 font-bold' >{data?.channelTitle}</p>
+                <p className='text-sm ml-2 text-gray-500 font-semibold' >{date} ago</p>
             </div>
         </div>
     )

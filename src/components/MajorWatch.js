@@ -1,27 +1,25 @@
 import React ,{useEffect , useState}from 'react'
-import VideoDetails from './VideoDetails'
 import { useSearchParams } from 'react-router-dom'
+import CommentContainer from './CommentContainer';
 
 const MajorWatch = () => {
-  const [param] = useSearchParams();
-  const cid = param.get('c')
 
-
+  const [param,setParams] = useSearchParams();
+  const vid = param.get('v')
   return (
     <div className='col-span-8'>
       <div>
-        <iframe width="650" height="380"
-          src={"https://www.youtube.com/embed/"+param.get('v')}
+        <iframe width="710" height="410"
+          src={"https://www.youtube.com/embed/"+vid}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen>
         </iframe>
       </div>
-      <VideoDetails/>
-      <div>
-        Comment Section
-      </div>
+      {/* <VideoDetails/> */}
+      <CommentContainer/>
+
     </div>
   )
 }
