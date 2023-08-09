@@ -22,7 +22,7 @@ const VideoDescrpt = () => {
       const data = await d.json();
       console.log(data)
       if(cid!==null){
-        setchannel(data.items[0])
+        setchannel(data?.items[0])
       }
     }
 
