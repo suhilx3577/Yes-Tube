@@ -7,14 +7,22 @@ import {PiFilmReelLight} from 'react-icons/pi';
 import {BiMusic,BiUserCircle ,BiVideoPlus} from 'react-icons/bi';
 import {HiOutlineBellAlert} from 'react-icons/hi';
 import {GiHamburgerMenu} from 'react-icons/gi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import{ImYoutube2} from 'react-icons/im'
+import { useDispatch } from 'react-redux';
+import { changeContainer } from '../utils/containerSlice';
 
 let logo = require('../../src/ReactLogo.png')
 
 const Navbar = () => {
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [sideBar, setSideBar] = useState(true)
+  const handleClick = () =>{
+    dispatch(changeContainer(null))
+    navigate('/')
+  }
 
   return (
     <div className=''>
@@ -27,7 +35,7 @@ const Navbar = () => {
           <GiHamburgerMenu size={26}/>
           </ul>
           <Link to='/'>
-            <ul><img className='w-7 h-7 skew-x-6 ' src={logo} alt="" /></ul>
+            <ul onClick={()=>handleClick()}><img className='w-7 h-7 skew-x-6 ' src={logo} alt="" /></ul>
           </Link>
         </div>
         <SearchBar />

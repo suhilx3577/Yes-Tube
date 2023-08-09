@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { formatNumber } from '../utils/helpers';
+import { formatNumber ,get_time_diff} from '../utils/helpers';
 import {BsDownload} from 'react-icons/bs';
 import {BiShare} from 'react-icons/bi';
 import {SlOptions} from 'react-icons/sl';
@@ -16,11 +16,12 @@ const VideoDescrpt = () => {
     const vid = param.get('v')
 
     const number = formatNumber(channel?.statistics?.subscriberCount)
+    const time = get_time_diff(vDetails?.snippet?.publishedAt)
 
     async function getChannelDetail () {
       const d = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2Cstatistics%2CcontentDetails&id=${cid}&key=${process.env.YOUTUBE_API_KEY}`)
       const data = await d.json();
-      console.log(data)
+      // console.log(data)
       if(cid!==null){
         setchannel(data?.items[0])
       }
@@ -29,7 +30,7 @@ const VideoDescrpt = () => {
     async function getVideoDetail () {
       const d = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${vid}&key=${process.env.YOUTUBE_API_KEY}`)
       const data = await d.json();
-      // console.log(data)
+      console.log(data?.items[0])
       setVDetails(data?.items[0])
       setCid(data?.items[0]?.snippet?.channelId)
     }
@@ -42,6 +43,9 @@ const VideoDescrpt = () => {
         getChannelDetail();
       }
     },[vDetails]);
+
+
+    const viewCount = formatNumber(vDetails?.statistics?.viewCount)
 
   return (
     <div className='flex flex-col gap-2 bg-slate-800 w-[44.5rem] mt-1 text-white'>
@@ -70,12 +74,11 @@ const VideoDescrpt = () => {
             </div>
         </div>
         <div className='min-w-min  p-4 rounded-2xl bg-slate-700 '>
-          <div className='flex gap-4'>
-            <p>views</p>
-            <p>time</p>
+          <div className='flex gap-4 text-sm items-center '>
+            <p>{viewCount} views</p>
+            <p>{time}</p>
           </div>
-          <p className='mt-1'>Title Is SO big bro</p>
-          <p className='mt-4'>Description is Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat eligendi officia ipsam corrupti similique esse placeat molestias inventore, tenetur, eius laborum hic ex. Eligendi sequi dolorem reiciendis aliquid sed sunt!</p>
+          <p className='mt-4'>{vDetails?.snippet?.description}</p>
         </div>
     </div>
   )

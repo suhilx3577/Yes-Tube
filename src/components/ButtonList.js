@@ -26,7 +26,7 @@ const ButtonList = () => {
         arr.map((name,i)=>(
           <button key={i} 
             onClick={()=> setQuery(name)}
-            className='h-10 whitespace-nowrap w-min rounded-lg hover:bg-slate-500 hover:text-slate-200 bg-black text-white px-4 py-2 transition ease-in duration-300'>
+            className='h-10 whitespace-nowrap w-min rounded-lg hover:bg-slate-500 hover:text-slate-200 bg-slate-900 text-white px-4 py-2 transition ease-in duration-300'>
             {name}
           </button>
         ))

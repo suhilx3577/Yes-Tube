@@ -18,9 +18,10 @@ const FrontContainer = () => {
     setData(j.items)
 
   }
+  console.log('rendered front container')
   useEffect(()=>{
-    fetchData()
-  },[])
+    if(cdata==null) fetchData()
+  },[cdata])
 
   return (
     <>
