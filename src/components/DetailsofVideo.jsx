@@ -1,11 +1,15 @@
 import React,{useState,useEffect} from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { formatNumber } from '../utils/helpers';
-  
-const VideoDetails = () => {
+import {BsDownload} from 'react-icons/bs'
+import {FaRegShareFromSquare} from 'react-icons/fa'
+import {SlOptions} from 'react-icons/sl'
+import { AiFillLike, AiFillDislike } from 'react-icons/ai'
+
+ const DetailsofVideo = () => {
     const [channel, setchannel] = useState(null)
     const [cid , setCid] = useState(null)
-    const [videoDetails, setVideoDetails] = useState(null)
+    const [vDetails, setVDetails] = useState(null)
 
     const [param] = useSearchParams();
     const vid = param.get('v')
@@ -25,7 +29,7 @@ const VideoDetails = () => {
       const d = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${vid}&key=${process.env.YOUTUBE_API_KEY}`)
       const data = await d.json();
       // console.log(data)
-      setVideoDetails(data?.items[0])
+      setVDetails(data?.items[0])
       setCid(data?.items[0]?.snippet?.channelId)
     }
     useEffect(()=>{
@@ -33,15 +37,14 @@ const VideoDetails = () => {
     },[])
 
     useEffect(()=>{
-      if(videoDetails!==null){
+      if(vDetails!==null){
         getChannelDetail();
       }
-    },[videoDetails])
-
+    },[vDetails]);
 
   return (
     <div className='flex flex-col gap-2 bg-red-300 w-[44.5rem] mt-1'>
-        <h1 className='text-xl leading-2 font-semibold '>{videoDetails?.snippet?.title}</h1>
+        <h1 className='text-xl leading-2 font-semibold '>{vDetails?.snippet?.title}</h1>
         <div className='flex flex-row justify-between py-2'>
             <div className='flex gap-1'>
                 <div className='w-10 h-10 rounded-full overflow-hidden flex items-center'>
@@ -54,10 +57,10 @@ const VideoDetails = () => {
                 <button className=' ml-1 w-min h-10 rounded-full bg-slate-700 hover:bg-slate-400 text-white px-3 '>Subscribe</button>
             </div>
             <div className='flex'>
-                <div>like</div>
-                <div>share</div>
-                <div>download</div>
-                <div>option</div>
+                <div><AiFillLike/><AiFillDislike/></div>
+                <div><FaRegShareFromSquare/></div>
+                <div><BsDownload/></div>
+                <div><SlOptions/></div>
             </div>
         </div>
         <div>
@@ -67,4 +70,4 @@ const VideoDetails = () => {
   )
 }
 
-export default VideoDetails
+export default DetailsofVideo;

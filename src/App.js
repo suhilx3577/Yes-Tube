@@ -8,11 +8,11 @@ import Watch from './components/Watch'
 
 const App = () => {
   return (
-    <>
+    <div className='bg-slate-800'>
         <Navbar/>
         <Outlet/>
         <Footer/>
-    </>
+    </div>
   )
 }
 export const appRouter = createBrowserRouter(

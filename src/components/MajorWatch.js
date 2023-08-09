@@ -1,6 +1,7 @@
 import React ,{useEffect , useState}from 'react'
 import { useSearchParams } from 'react-router-dom'
 import CommentContainer from './CommentContainer';
+import VideoDescrpt from './VideoDescrpt';
 
 const MajorWatch = () => {
 
@@ -17,11 +18,11 @@ const MajorWatch = () => {
           allowFullScreen>
         </iframe>
       </div>
-      {/* <VideoDetails/> */}
+      <VideoDescrpt/>
       <CommentContainer/>
 
     </div>
   )
 }
 
-export default MajorWatch
+export default MajorWatch;

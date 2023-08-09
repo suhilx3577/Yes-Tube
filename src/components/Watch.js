@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import MajorWatch from './MajorWatch'
-// import MinorWatch from './MinorWatch'
+import MinorWatch from './MinorWatch'
 
 const Watch = () => {
   console.log('Watch Rendered')
@@ -11,7 +11,7 @@ const Watch = () => {
       </div>
       <div className='bg-slate-800 px-16 py-2 w-screen h-screen grid grid-cols-12'>
         <MajorWatch/>
-        {/* <MinorWatch/> */}
+        <MinorWatch/>
       </div>
     </div>
   )

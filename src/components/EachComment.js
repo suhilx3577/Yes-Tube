@@ -3,9 +3,7 @@ import { get_time_diff } from '../utils/helpers'
 import { AiFillLike, AiFillDislike } from 'react-icons/ai'
 
 const EachComment = ({ details }) => {
-    console.log(details)
     const { snippet } = details?.snippet?.topLevelComment
-    console.log(snippet)
     const time = get_time_diff(snippet.publishedAt)
 
     return (

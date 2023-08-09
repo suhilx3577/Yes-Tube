@@ -12,7 +12,7 @@ const SugCard = ({data}) => {
             <div className='max-w-[150px] py-2'>
                 <p className='line-clamp-2 font-bold text-white text-sm overflow-hidden'>{data?.title}</p>
                 <p className='text-sm mt-2 text-gray-400 font-bold' >{data?.channelTitle}</p>
-                <p className='text-sm ml-2 text-gray-500 font-semibold' >{date} ago</p>
+                <p className='text-sm  text-gray-500 font-semibold' >{date} ago</p>
             </div>
         </div>
     )

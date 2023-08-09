@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
-import SearchBar from './SearchBar'
-import {AiOutlineHome} from 'react-icons/ai'
-import {BsStopwatch} from 'react-icons/bs'
-import {BsFillCollectionPlayFill} from 'react-icons/bs'
-import {PiFilmReelLight} from 'react-icons/pi'
-import {BiMusic} from 'react-icons/bi'
-import {GiHamburgerMenu} from 'react-icons/gi'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import SearchBar from './SearchBar';
+import {AiOutlineHome,AiOutlineBell} from 'react-icons/ai';
+import {BsStopwatch} from 'react-icons/bs';
+import {BsFillCollectionPlayFill} from 'react-icons/bs';
+import {PiFilmReelLight} from 'react-icons/pi';
+import {BiMusic,BiUserCircle ,BiVideoPlus} from 'react-icons/bi';
+import {HiOutlineBellAlert} from 'react-icons/hi';
+import {GiHamburgerMenu} from 'react-icons/gi';
+import { Link } from 'react-router-dom';
+import{ImYoutube2} from 'react-icons/im'
+
+let logo = require('../../src/ReactLogo.png')
+
 const Navbar = () => {
 
   const [sideBar, setSideBar] = useState(true)
@@ -22,14 +27,14 @@ const Navbar = () => {
           <GiHamburgerMenu size={26}/>
           </ul>
           <Link to='/'>
-            <ul>logo</ul>
+            <ul><img className='w-7 h-7 skew-x-6 ' src={logo} alt="" /></ul>
           </Link>
         </div>
         <SearchBar />
-        <div className='flex gap-8'>
-          <ul>switch</ul>
-          <ul>bell</ul>
-          <ul>user</ul>
+        <div className='flex gap-8 text-2xl '>
+          <ul><BiVideoPlus/></ul>
+          <ul><AiOutlineBell/></ul>
+          <ul ><BiUserCircle/></ul>
         </div>
       </div>
       <div className={ 'fixed mt-16 bg-slate-200 min-h-screen w-52 ml-[-240px] z-10 '+ `${sideBar? '' : 'translate-x-60'}`+' duration-150 transition ease-out'  }>
