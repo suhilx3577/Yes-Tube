@@ -11,6 +11,8 @@ import { useSelector } from 'react-redux';
 const VideoDescrpt = () => {
 
   // Custom Hook Part
+
+  console.log('video Descrpt')
   const [param ] =  useSearchParams();
   const vid = param.get('v');
   const cid = useSelector(store=> store.container.channelId)

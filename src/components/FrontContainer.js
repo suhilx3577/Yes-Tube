@@ -11,7 +11,7 @@ const FrontContainer = () => {
 
 
   async function fetchData (){
-    const d = await fetch(process.env.YOUTUBE_API_URLANDKEY);
+    const d = await fetch(process.env.YOUTUBE_API_URL+process.env.YOUTUBE_API_KEY);
     const j = await d.json();
     // console.log(j.items[0])
     dispatch(changeContainer(j.items))

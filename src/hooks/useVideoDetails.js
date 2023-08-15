@@ -15,7 +15,7 @@ export default function useVideoDetails (vid){
     const [vDetails, setVDetails] = useState(null)
     useEffect(()=>{
     getVideoDetail(vid,setVDetails,dispatch);
-    },[])
+    },[vid])
 
     return [vDetails]
 }

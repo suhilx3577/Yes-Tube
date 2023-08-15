@@ -56,4 +56,11 @@
     * Along that it Dispatches ChangeCid to change channel id
 # # useChannelDetails
     * this takes channelId and returns Channel-Details. channelId is subscribed to the STORE
-    * Everytime the channelId is changed It Fetches the Channel-Details Again
+    * Everytime the channelId is changed It Fetches the Channel-Details Again.
+
+
+# 3) useQueryResults
+-> it is used to get the Search Results and Store it in the Redux Store.
+-> everytime the searchQuery is Changed, it is Invoked
+
+
