@@ -3,25 +3,24 @@ import FixedBar from './FixedBar'
 import MainContainer from './MainContainer'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeContainer } from '../utils/containerSlice'
+import useFetchContainer from '../hooks/useFetchContainer'
 
 const FrontContainer = () => {
-  const dispatch = useDispatch();
-  const[data,setData] = useState(null)
+  
   const cdata = useSelector((state)=>state.container.cdata)
+  
+  useFetchContainer(cdata);
+  
+  // const dispatch = useDispatch();
+  // async function fetchData (){
+  //   const d = await fetch(process.env.YOUTUBE_API_URL+process.env.YOUTUBE_API_KEY);
+  //   const j = await d.json();
+  //   dispatch(changeContainer(j.items))
 
-
-  async function fetchData (){
-    const d = await fetch(process.env.YOUTUBE_API_URL+process.env.YOUTUBE_API_KEY);
-    const j = await d.json();
-    // console.log(j.items[0])
-    dispatch(changeContainer(j.items))
-    setData(j.items)
-
-  }
-  // console.log('rendered front container')
-  useEffect(()=>{
-    if(cdata==null) fetchData()
-  },[cdata])
+  // }
+  // useEffect(()=>{
+  //   if(cdata==null) fetchData()
+  // },[cdata])
 
   return (
     <>

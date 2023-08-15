@@ -3,32 +3,17 @@ import { useDispatch } from 'react-redux';
 import {BsSearch} from 'react-icons/bs';
 import { changeContainer } from '../utils/containerSlice';
 import { redirect, useNavigate } from 'react-router-dom';
+// import useQueryResults from '../hooks/useQueryResults';
+import useSearchSuggestion from '../hooks/useSearchSuggestion';
 
 const SearchBar = () => {
   const navigate = useNavigate();
-  const[searchQ, setSearchQ] = useState('')
-  const[data, setData] = useState('')
-  const[open, setOpen] = useState(false)
   const dispatch = useDispatch();
 
-
-  async function getSuggestion(param){
-    const d = await fetch('http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q='+searchQ)
-    const j = await d.json();
-    // console.log(j[1]);
-    setData(j[1])
-  }
-
-  useEffect(()=>{
-    let timer = setTimeout(()=>{
-      getSuggestion(searchQ)
-    },200)
-
-    return ()=>{
-      clearTimeout(timer)
-    }
-  },[searchQ])
-
+  const[searchQ, setSearchQ] = useState('')
+  const[open, setOpen] = useState(false)
+  
+  const [data] = useSearchSuggestion(searchQ)
 
 
   async function getQueryResults(){
@@ -39,16 +24,6 @@ const SearchBar = () => {
     navigate('/')
   }
 
-function handleSearch(){
-  getQueryResults(searchQ);
-
-}
-
-  function handleClick (detail) {
-    console.log(detail)
-    setSearchQ(detail)
-    setOpen(false)
-  }
 
   return (
     <div>
@@ -60,9 +35,10 @@ function handleSearch(){
         onFocus={()=>setOpen(true)}
         value={searchQ}
         onChange={(e)=>setSearchQ(e.target.value)}
-        // onBlur={()=>setOpen(false)}
         />
-        <div onClick={()=>handleSearch(searchQ)} className='hover:cursor-pointer flex items-center w-20 px-4 rounded-r-full text-white bg-slate-500 font-bold border-l'>
+        <div onClick={()=>{
+          if(searchQ!=='') getQueryResults(searchQ);
+        }} className='hover:cursor-pointer flex items-center w-20 px-4 rounded-r-full text-white bg-slate-500 font-bold border-l'>
         <BsSearch className='text-xl' />
         </div>
 
@@ -71,7 +47,10 @@ function handleSearch(){
           open && 
           <div className='rounded-b-lg w-[368px] h-min bg-gray-400 absolute   ml-[1rem] text-black'>
             {data.map((detail,i)=>
-            <div  onClick={()=> handleClick(detail)} key={detail} className='hover:cursor-pointer hover:bg-gray-500 '>
+            <div  onClick={()=>{
+              setSearchQ(detail)
+              setOpen(false)
+            } } key={detail} className='hover:cursor-pointer hover:bg-gray-500 '>
               <ul className='px-2 py-1 '>{detail}</ul>
             </div>
             )}

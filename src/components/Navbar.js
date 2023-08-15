@@ -19,6 +19,8 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [sideBar, setSideBar] = useState(true)
+
+  
   const handleClick = () =>{
     dispatch(changeContainer(null))
     navigate('/')
@@ -30,7 +32,6 @@ const Navbar = () => {
         <div className='flex gap-5'>
           <ul onClick={()=>{
             setSideBar(!sideBar)
-            // console.log(sideBar)
           }}>
           <GiHamburgerMenu size={26}/>
           </ul>
