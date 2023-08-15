@@ -5,12 +5,17 @@ import {BsDownload} from 'react-icons/bs';
 import {BiShare} from 'react-icons/bi';
 import {SlOptions} from 'react-icons/sl';
 import { AiFillLike, AiFillDislike } from 'react-icons/ai'
+import { useDispatch, useSelector } from 'react-redux';
+import { changecId } from '../utils/containerSlice';
 
 const VideoDescrpt = () => {
+
+    const dispatch = useDispatch();
 
     const [channel, setchannel] = useState(null)
     const [cid , setCid] = useState(null)
     const [vDetails, setVDetails] = useState(null)
+
 
     const [param] = useSearchParams();
     const vid = param.get('v')
@@ -21,7 +26,6 @@ const VideoDescrpt = () => {
     async function getChannelDetail () {
       const d = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2Cstatistics%2CcontentDetails&id=${cid}&key=${process.env.YOUTUBE_API_KEY}`)
       const data = await d.json();
-      // console.log(data)
       if(cid!==null){
         setchannel(data?.items[0])
       }
@@ -30,8 +34,10 @@ const VideoDescrpt = () => {
     async function getVideoDetail () {
       const d = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${vid}&key=${process.env.YOUTUBE_API_KEY}`)
       const data = await d.json();
-      console.log(data?.items[0])
       setVDetails(data?.items[0])
+      // console.log(data?.items[0])
+      // changing the channel id
+      dispatch(changecId(data?.items[0]?.snippet?.channelId))
       setCid(data?.items[0]?.snippet?.channelId)
     }
     useEffect(()=>{
@@ -78,7 +84,7 @@ const VideoDescrpt = () => {
             <p>{viewCount} views</p>
             <p>{time}</p>
           </div>
-          <p className='mt-4'>{vDetails?.snippet?.description}</p>
+          <p className='mt-4'>{(vDetails?.snippet?.description).slice(0,150)}</p>
         </div>
     </div>
   )

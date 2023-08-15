@@ -3,7 +3,7 @@ import MajorWatch from './MajorWatch'
 import MinorWatch from './MinorWatch'
 
 const Watch = () => {
-  console.log('Watch Rendered')
+  // console.log('Watch Rendered')
   return (
     <div className='overflow-x-hidden'>
       <div className='h-16'>

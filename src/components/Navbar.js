@@ -26,11 +26,11 @@ const Navbar = () => {
 
   return (
     <div className=''>
-      <div className={'h-16 fixed w-full bg-slate-800 flex justify-between items-center px-6 py-2 text-white'}>
+      <div className={'h-16 fixed w-full z-10 bg-slate-800 flex justify-between items-center px-6 py-2 text-white'}>
         <div className='flex gap-5'>
           <ul onClick={()=>{
             setSideBar(!sideBar)
-            console.log(sideBar)
+            // console.log(sideBar)
           }}>
           <GiHamburgerMenu size={26}/>
           </ul>

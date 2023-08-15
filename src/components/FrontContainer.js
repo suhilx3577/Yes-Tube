@@ -13,12 +13,12 @@ const FrontContainer = () => {
   async function fetchData (){
     const d = await fetch(process.env.YOUTUBE_API_URLANDKEY);
     const j = await d.json();
-    console.log(j.items[0])
+    // console.log(j.items[0])
     dispatch(changeContainer(j.items))
     setData(j.items)
 
   }
-  console.log('rendered front container')
+  // console.log('rendered front container')
   useEffect(()=>{
     if(cdata==null) fetchData()
   },[cdata])

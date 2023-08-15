@@ -14,7 +14,7 @@ const CommentContainer = () => {
         const data = await d.json();
         setComment(data.items);
     }
-    console.log(comment)
+    // console.log(comment)
 
     useEffect(() => {
         getCommentDetails();
