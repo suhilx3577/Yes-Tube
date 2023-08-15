@@ -1,57 +1,24 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { formatNumber ,get_time_diff} from '../utils/helpers';
 import {BsDownload} from 'react-icons/bs';
 import {BiShare} from 'react-icons/bi';
 import {SlOptions} from 'react-icons/sl';
 import { AiFillLike, AiFillDislike } from 'react-icons/ai'
-import { useDispatch, useSelector } from 'react-redux';
-import { changecId } from '../utils/containerSlice';
-
+import useVideoDetails from '../hooks/useVideoDetails';
+import useChannelDetails from '../hooks/useChannelDetails';
 const VideoDescrpt = () => {
 
-    const dispatch = useDispatch();
-
-    const [channel, setchannel] = useState(null)
-    const [cid , setCid] = useState(null)
-    const [vDetails, setVDetails] = useState(null)
-
-
-    const [param] = useSearchParams();
-    const vid = param.get('v')
-
-    const number = formatNumber(channel?.statistics?.subscriberCount)
-    const time = get_time_diff(vDetails?.snippet?.publishedAt)
-
-    async function getChannelDetail () {
-      const d = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2Cstatistics%2CcontentDetails&id=${cid}&key=${process.env.YOUTUBE_API_KEY}`)
-      const data = await d.json();
-      if(cid!==null){
-        setchannel(data?.items[0])
-      }
-    }
-
-    async function getVideoDetail () {
-      const d = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${vid}&key=${process.env.YOUTUBE_API_KEY}`)
-      const data = await d.json();
-      setVDetails(data?.items[0])
-      // console.log(data?.items[0])
-      // changing the channel id
-      dispatch(changecId(data?.items[0]?.snippet?.channelId))
-      setCid(data?.items[0]?.snippet?.channelId)
-    }
-    useEffect(()=>{
-      getVideoDetail();
-    },[])
-
-    useEffect(()=>{
-      if(vDetails!==null){
-        getChannelDetail();
-      }
-    },[vDetails]);
-
-
-    const viewCount = formatNumber(vDetails?.statistics?.viewCount)
+  // Custom Hook Part
+  const [param ] =  useSearchParams();
+  const vid = param.get('v');
+  
+  const[vDetails , cid] = useVideoDetails(vid);
+  const [channel] =  useChannelDetails(cid,vDetails);
+  
+  const number = formatNumber(channel?.statistics?.subscriberCount)
+  const time = get_time_diff(vDetails?.snippet?.publishedAt)
+  const viewCount = formatNumber(vDetails?.statistics?.viewCount)
 
   return (
     <div className='flex flex-col gap-2 bg-slate-800 w-[44.5rem] mt-1 text-white'>
@@ -82,7 +49,7 @@ const VideoDescrpt = () => {
         <div className='min-w-min  p-4 rounded-2xl bg-slate-700 '>
           <div className='flex gap-4 text-sm items-center '>
             <p>{viewCount} views</p>
-            <p>{time}</p>
+            <p>{time} ago </p>
           </div>
           <p className='mt-4'>{(vDetails?.snippet?.description).slice(0,150)}</p>
         </div>

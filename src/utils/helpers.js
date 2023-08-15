@@ -26,11 +26,11 @@ export function get_time_diff( datetime )
         month = Math.floor(days/30) ;
         years = Math.floor(month/12) ;
 
-        if(years>=1) return `${years} year `
-        else if(month>=1) return `${month} months `
-        if(days==1) return "a day "
+        if(years>=1) return `${years} Year `
+        else if(month>=1) return `${month} Months `
+        if(days==1) return "A Day "
         if(days/30 >= 1) return 
-        answer+=days + " days ";
+        answer+=days + " Days ";
         return answer
     }
 
