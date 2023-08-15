@@ -7,14 +7,15 @@ import {SlOptions} from 'react-icons/sl';
 import { AiFillLike, AiFillDislike } from 'react-icons/ai'
 import useVideoDetails from '../hooks/useVideoDetails';
 import useChannelDetails from '../hooks/useChannelDetails';
+import { useSelector } from 'react-redux';
 const VideoDescrpt = () => {
 
   // Custom Hook Part
   const [param ] =  useSearchParams();
   const vid = param.get('v');
-  
-  const[vDetails , cid] = useVideoDetails(vid);
-  const [channel] =  useChannelDetails(cid,vDetails);
+  const cid = useSelector(store=> store.container.channelId)
+  const[vDetails ] = useVideoDetails(vid);
+  const [channel] =  useChannelDetails(cid);
   
   const number = formatNumber(channel?.statistics?.subscriberCount)
   const time = get_time_diff(vDetails?.snippet?.publishedAt)

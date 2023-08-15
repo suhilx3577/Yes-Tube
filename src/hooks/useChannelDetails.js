@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useChannelDetails (cid,vDetails) {
+export default function useChannelDetails (cid) {
   
   async function getChannelDetail (cid,setChannel) {
     if(cid!==null){
@@ -13,10 +13,8 @@ export default function useChannelDetails (cid,vDetails) {
   const[channel,setChannel] = useState(null)
 
     useEffect(()=>{
-        if(vDetails!==null){
-          getChannelDetail(cid,setChannel);
-        }
-      },[vDetails]);
+        getChannelDetail(cid,setChannel);
+      },[cid]);
     
     return [channel];
 }

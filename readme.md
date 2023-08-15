@@ -52,7 +52,8 @@
 
 -> First useVideoDetails is called and then useChannelDetails
 # # useVideoDetail 
-    * this takes videoId and Returns VideoDetails and ChannelId for useChannelDetail
+    * this takes videoId and Returns VideoDetails.
+    * Along that it Dispatches ChangeCid to change channel id
 # # useChannelDetails
-    * this takes channelId and Gives Channel-Details.
-    * as it takes another Argument, such that everytime the Videodetails is changed the             ChannelDetails is Fetched again
+    * this takes channelId and returns Channel-Details. channelId is subscribed to the STORE
+    * Everytime the channelId is changed It Fetches the Channel-Details Again
