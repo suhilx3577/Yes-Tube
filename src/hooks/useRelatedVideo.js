@@ -8,7 +8,7 @@ async function getRelatedVideo(setClist,cid){
     try{
       // CURRENTLY GET BY VIDEO ID FEATURE OF YOUTUBE API IS STOPPED. SO IM USING GET BY CHANNEL ID
       // const d = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${vid}&maxResults=15&type=video&key=${process.env.YOUTUBE_API_KEY}`)     //->working
-      const d = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&type=video&channelId=${cid}&key=${process.env.YOUTUBE_API_KEY}`);                         //->trial 2
+      const d = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&videoDuration=medium&maxResults=25&type=video&channelId=${cid}&key=${process.env.YOUTUBE_API_KEY}`);                         //->trial 2
       const j = await d.json();
       setClist(j?.items)
     }

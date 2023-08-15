@@ -63,4 +63,9 @@
 -> it is used to get the Search Results and Store it in the Redux Store.
 -> everytime the searchQuery is Changed, it is Invoked
 
+# 4) useSearchSuggestion
+-> it is used to get the data of search suggestions.
+-> if passed in string it gives Search Suggestions of the String
 
+# 5) useComment
+-> it takes in the video id and returns the comments of the particular video

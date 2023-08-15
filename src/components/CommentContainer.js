@@ -2,24 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import {FaUserAlt} from 'react-icons/fa'
 import EachComment from './EachComment';
+import useComment from '../hooks/useComment';
 const CommentContainer = () => {
-
     const [param] = useSearchParams();
     const vid = param.get('v');
-    const [comment, setComment] = useState(null)
-    // const [details, setDetails] = useState(null)
-
-    async function getCommentDetails() {
-        const d = await fetch(`https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.YOUTUBE_API_KEY}&textFormat=plainText&part=snippet%2Creplies&order=relevance&&videoId=${vid}&maxResults=50`)
-        const data = await d.json();
-        setComment(data.items);
-    }
-    // console.log(comment)
-
-    useEffect(() => {
-        getCommentDetails();
-    }, [])
-
+    const [comment] = useComment(vid);
 
     return (
         <div className='bg-slate-800 w-[44.5rem] text-white mt-2'>
@@ -35,18 +22,13 @@ const CommentContainer = () => {
                     <div className='flex flex-row-reverse gap-4 font-semibold'>
                         <button className='bg-slate-400 w-24 h-10 py-2 rounded-full'>Comment</button>
                         <button className='hover:bg-slate-600 w-24 h-10 py-2 rounded-full'>Cancel</button>
-
                     </div>
                 </div>
             </div>
             <div className='flex flex-col gap-4'>
                 {
                     comment &&
-                    comment.map((com)=>(
-
-                        <EachComment  key={com.id} details={com}/>
-
-                    ))
+                    comment.map((com)=>(<EachComment  key={com.id} details={com}/>))
                 }
             </div>
         </div>

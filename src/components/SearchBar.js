@@ -2,8 +2,7 @@ import React ,{useEffect, useState}from 'react';
 import { useDispatch } from 'react-redux';
 import {BsSearch} from 'react-icons/bs';
 import { changeContainer } from '../utils/containerSlice';
-import { redirect, useNavigate } from 'react-router-dom';
-// import useQueryResults from '../hooks/useQueryResults';
+import { useNavigate } from 'react-router-dom';
 import useSearchSuggestion from '../hooks/useSearchSuggestion';
 
 const SearchBar = () => {
@@ -14,7 +13,6 @@ const SearchBar = () => {
   const[open, setOpen] = useState(false)
   
   const [data] = useSearchSuggestion(searchQ)
-
 
   async function getQueryResults(){
     const d = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&type=video&q=${searchQ}&key=${process.env.YOUTUBE_API_KEY}`);

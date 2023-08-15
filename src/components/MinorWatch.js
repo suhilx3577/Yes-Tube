@@ -7,7 +7,6 @@ import useRelatedVideo from '../hooks/useRelatedVideo';
 const MinorWatch = () => {
   
   const cid = useSelector(store=>store.container.channelId)
-  console.log('Channel id in store from minor is : '+cid)
 
   const [cList] = useRelatedVideo(cid)
   return (
