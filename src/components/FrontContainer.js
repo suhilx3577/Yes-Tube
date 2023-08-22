@@ -8,19 +8,8 @@ import useFetchContainer from '../hooks/useFetchContainer'
 const FrontContainer = () => {
   
   const cdata = useSelector((state)=>state.container.cdata)
-  
-  useFetchContainer(cdata);
-  
-  // const dispatch = useDispatch();
-  // async function fetchData (){
-  //   const d = await fetch(process.env.YOUTUBE_API_URL+process.env.YOUTUBE_API_KEY);
-  //   const j = await d.json();
-  //   dispatch(changeContainer(j.items))
 
-  // }
-  // useEffect(()=>{
-  //   if(cdata==null) fetchData()
-  // },[cdata])
+  useFetchContainer(cdata);
 
   return (
     <>

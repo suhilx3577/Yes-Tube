@@ -11,6 +11,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import{ImYoutube2} from 'react-icons/im'
 import { useDispatch } from 'react-redux';
 import { changeContainer } from '../utils/containerSlice';
+import SideBar from './SideBar';
 
 let logo = require('../../src/ReactLogo.png')
 
@@ -47,7 +48,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className={ 'fixed mt-16 bg-slate-200 min-h-screen w-52 ml-[-240px] z-10 '+ `${sideBar? '' : 'translate-x-60'}`+' duration-150 transition ease-out'  }>
-        sideBar
+        <SideBar/>
       </div>
     </div>
   )
