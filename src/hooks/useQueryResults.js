@@ -7,7 +7,7 @@ export default function useQueryResults (query) {
   const dispatch = useDispatch();
   
   async function getQueryResults(query){
-    const d = await fetch(`https://cors-anywhere.herokuapp.com/https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&type=video&videoDuration=medium&q=${query}&key=${process.env.YOUTUBE_API_KEY}`);
+    const d = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&type=video&videoDuration=medium&q=${query}&key=${process.env.YOUTUBE_API_KEY}`);
     const data = await d.json();
     dispatch(changeContainer(data.items))
   }

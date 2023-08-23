@@ -17,7 +17,8 @@ const VideoDescrpt = () => {
   // Use of Custom Hooks
   const[vDetails ] = useVideoDetails(vid);
   const [channel] =  useChannelDetails(cid);
-  
+
+  console.log(channel)
   const number = formatNumber(channel?.statistics?.subscriberCount)
   const time = get_time_diff(vDetails?.snippet?.publishedAt)
   const viewCount = formatNumber(vDetails?.statistics?.viewCount)
