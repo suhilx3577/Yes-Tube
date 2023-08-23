@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 import {FaUserAlt} from 'react-icons/fa'
 import EachComment from './EachComment';

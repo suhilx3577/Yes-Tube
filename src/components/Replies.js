@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Replies = ({details}) => {
-    console.log(details)
     return (
         <div className='flex flex-col gap-3'>
             <div className='flex gap-2 items-center'>

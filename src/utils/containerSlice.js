@@ -5,6 +5,7 @@ const containerSlice = createSlice({
     initialState:{
     cdata :null,
     channelId:null,
+    ch_query:null,
     },
     reducers:{
         changeContainer:(state,action)=>{
@@ -12,11 +13,14 @@ const containerSlice = createSlice({
         },
         changecId : (state, action)=>{
             state.channelId = action.payload
+        },
+        changech_query : (state, action)=>{
+            state.ch_query = action.payload
         }
 
     }
 })
 
-export const {changeContainer,changecId} = containerSlice.actions;
+export const {changeContainer,changecId,changech_query} = containerSlice.actions;
 
 export default containerSlice.reducer;

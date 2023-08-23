@@ -1,8 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import FixedBar from './FixedBar'
 import MainContainer from './MainContainer'
-import { useDispatch, useSelector } from 'react-redux'
-import { changeContainer } from '../utils/containerSlice'
+import { useSelector } from 'react-redux'
 import useFetchContainer from '../hooks/useFetchContainer'
 
 const FrontContainer = () => {

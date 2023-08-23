@@ -1,16 +1,16 @@
-import React ,{useEffect , useState}from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import React from 'react'
+import { Link  } from 'react-router-dom'
 import SugCard from './SugCard';
 import { useSelector } from 'react-redux';
 import useRelatedVideo from '../hooks/useRelatedVideo';
 
 const MinorWatch = () => {
   
-  const cid = useSelector(store=>store.container.channelId)
-
-  const [cList] = useRelatedVideo(cid)
+  // const cid = useSelector(store=>store.container.channelId)
+  const query = useSelector(store=>store.container.ch_query)
+  const [cList] = useRelatedVideo(query)
   return (
-    <div className='col-span-4 bg-slate-800 flex flex-col gap-3'>
+    <div className='col-span-4 bg-slate-800 flex overflow-hidden flex-col gap-3'>
 
      { 
       cList && cList.map((c)=>(

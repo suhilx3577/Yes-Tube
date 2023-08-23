@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import { useDispatch } from 'react-redux';
-import { changecId } from '../utils/containerSlice';
+import { changecId, changech_query } from '../utils/containerSlice';
 
 
 async function getVideoDetail (vid,setVDetails,dispatch) {
@@ -8,6 +8,7 @@ async function getVideoDetail (vid,setVDetails,dispatch) {
   const data = await d.json();
   setVDetails(data?.items[0])
   dispatch(changecId(data?.items[0]?.snippet?.channelId))
+  dispatch(changech_query(data?.items[0]?.snippet?.title))
 }
 
 export default function useVideoDetails (vid){

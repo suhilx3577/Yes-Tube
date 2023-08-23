@@ -1,6 +1,4 @@
-import React ,{useEffect, useState}from 'react'
-import { useDispatch } from 'react-redux'
-import { changeContainer } from '../utils/containerSlice';
+import React ,{ useState}from 'react'
 import useQueryResults from '../hooks/useQueryResults';
 
 const ButtonList = () => {

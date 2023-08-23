@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { get_time_diff } from '../utils/helpers'
 import { AiFillLike, AiFillDislike } from 'react-icons/ai'
 

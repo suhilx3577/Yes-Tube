@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import SearchBar from './SearchBar';
-import {AiOutlineHome,AiOutlineBell} from 'react-icons/ai';
-import {BiMusic,BiUserCircle ,BiVideoPlus} from 'react-icons/bi';
+import {AiOutlineBell} from 'react-icons/ai';
+import {BiUserCircle ,BiVideoPlus} from 'react-icons/bi';
 import {GiHamburgerMenu} from 'react-icons/gi';
 import { Link, useNavigate } from 'react-router-dom';
-import{ImYoutube2} from 'react-icons/im'
 import { useDispatch } from 'react-redux';
 import { changeContainer } from '../utils/containerSlice';
 import SideBar from './SideBar';
 
-let logo = require('../../src/ReactLogo.png')
+let darkmodelogo = require('../../src/ok.jpg')
 
 const Navbar = () => {
 
@@ -37,7 +36,7 @@ const Navbar = () => {
           <div>
 
           <Link to='/'>
-            <ul onClick={()=>handleClick()}><img className='w-7 h-7 skew-x-6 ' src={logo} alt="" /></ul>
+            <ul onClick={()=>handleClick()}><img className='w-24 h-10 mix-blend-multiply' src={darkmodelogo} alt="" /></ul>
           </Link>
           </div>
         </div>

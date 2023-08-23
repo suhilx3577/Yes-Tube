@@ -1,4 +1,4 @@
-import React ,{useEffect , useState}from 'react'
+import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 import CommentContainer from './CommentContainer';
 import VideoDescrpt from './VideoDescrpt';

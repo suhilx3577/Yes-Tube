@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { get_time_diff } from '../utils/helpers';
 
 const Card = ({data,stats}) => {
