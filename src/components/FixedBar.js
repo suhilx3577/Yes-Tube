@@ -30,7 +30,7 @@ const FixedBar = () => {
     },
   ]
   return (
-    <div className='h-screen w-20'>
+    <div className='h-screen w-20 hidden xl:block'>
       <div className='bg-slate-800 fixed mt-16 z-0 h-screen w-20'>
         <div className='flex text-white flex-col items-center gap-1'>
           {

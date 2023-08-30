@@ -25,25 +25,26 @@ const SearchBar = () => {
 
   return (
     <div>
-      <div className='h-12  w-[550px] rounded-full bg-slate-500 border-white flex'>
+      <div className=' h-10 md:h-12 w-[70vw] md:w-[50vw] rounded-full bg-slate-500 border-white flex'>
         <input className='text-white border-white py-2 px-4 pl-10 w-full rounded-l-full bg-slate-500 focus:outline-none' onKeyUp={(e)=>{
           setSearchQ(e.target.value)
         }} type="text" 
         placeholder='Search '
         onFocus={()=>setOpen(true)}
+        onBlur={()=>setTimeout(()=>setOpen(false),100)}
         value={searchQ}
         onChange={(e)=>setSearchQ(e.target.value)}
         />
         <div onClick={()=>{
           if(searchQ!=='') getQueryResults(searchQ);
         }} className='hover:cursor-pointer flex items-center w-20 px-4 rounded-r-full text-white bg-slate-500 font-bold border-l'>
-        <BsSearch className='text-xl' />
+        <BsSearch className='text-lg md:text-xl' />
         </div>
 
       </div>
         {
           open && 
-          <div className='rounded-b-lg w-[368px] h-min bg-gray-400 absolute   ml-[1rem] text-black'>
+          <div className='rounded-b-lg w-[54vw] h-min bg-gray-400 absolute  ml-[1rem] text-black'>
             {data.map((detail,i)=>
             <div  onClick={()=>{
               setSearchQ(detail)
