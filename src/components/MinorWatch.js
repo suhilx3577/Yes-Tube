@@ -10,8 +10,7 @@ const MinorWatch = () => {
   const query = useSelector(store=>store.container.ch_query)
   const [cList] = useRelatedVideo(query)
   return (
-    <div className='col-span-4 bg-slate-800 flex overflow-hidden flex-col gap-3'>
-
+    <div className='xl:col-span-4 xl:mt-[43vh] bg-slate-800 flex overflow-hidden flex-col gap-3'>
      { 
       cList && cList.map((c)=>(
         <Link key={c.id.videoId ? c.id?.videoId : c.id.channelId } to={`/watch?v=${c.id.videoId}`}>

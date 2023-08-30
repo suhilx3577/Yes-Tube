@@ -1,17 +1,28 @@
 import React from 'react'
 import { basic, explore,last } from '../utils/icons'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useDispatch } from 'react-redux';
+
+import { changeContainer } from '../utils/containerSlice';
+import { Link } from 'react-router-dom';
+
 
 const SideBar = () => {
+  const dispatch = useDispatch();
+  function handleClick (item ){
+    if(item) dispatch(changeContainer(null))
+  }
 
   return (
     <div className='bg-slate-800 px-2 flex flex-col min-h-screen gap-2 pb-20'>
       {
         basic.map((item) => (
-          <div key={item.id} className=' hover:bg-slate-500 text-white rounded-lg flex p-2 px-4 gap-5 items-center' >
+          <Link key = {item.id} to={item?.link}>
+          <div onClick={()=>handleClick(item?.link)} className=' hover:bg-slate-500 text-white rounded-lg flex p-2 px-4 gap-5 items-center' >
             {item.icon}
             <p className='text-sm'>{item.name}</p>
           </div>
+          </Link>
         ))
       }
 
@@ -56,9 +67,6 @@ const SideBar = () => {
         <p className='text-sm'> About Press Copy Right Contact us Creator Advertise Developers</p>
         <p className='text-sm mt-1'>Terms Privacy Policy & Safety How Youtube Works Test New Features</p>
         <p className='text-sm mt-1 text-gray-500'>@2023 Google LLC </p>
-
-
-
       </div>
 
     </div>

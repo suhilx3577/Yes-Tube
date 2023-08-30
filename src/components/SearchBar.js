@@ -2,6 +2,7 @@ import React ,{ useState}from 'react';
 import { useDispatch } from 'react-redux';
 import {BsSearch} from 'react-icons/bs';
 import { changeContainer } from '../utils/containerSlice';
+import useQueryResults from '../hooks/useQueryResults';
 import { useNavigate } from 'react-router-dom';
 import useSearchSuggestion from '../hooks/useSearchSuggestion';
 
@@ -36,7 +37,9 @@ const SearchBar = () => {
         onChange={(e)=>setSearchQ(e.target.value)}
         />
         <div onClick={()=>{
-          if(searchQ!=='') getQueryResults(searchQ);
+          if(searchQ!=='') {
+            getQueryResults(searchQ);
+          }
         }} className='hover:cursor-pointer flex items-center w-20 px-4 rounded-r-full text-white bg-slate-500 font-bold border-l'>
         <BsSearch className='text-lg md:text-xl' />
         </div>
@@ -44,7 +47,7 @@ const SearchBar = () => {
       </div>
         {
           open && 
-          <div className='rounded-b-lg w-[54vw] h-min bg-gray-400 absolute  ml-[1rem] text-black'>
+          <div className='rounded-b-lg w-[54vw] xl:w-[48vw] h-min bg-gray-400 absolute  ml-[1rem] text-black'>
             {data.map((detail,i)=>
             <div  onClick={()=>{
               setSearchQ(detail)

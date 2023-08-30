@@ -24,6 +24,7 @@ export const basic = [
     {
         id: 1,
         name: 'Home',
+        link: '/',
         icon: <HomeIcon />
     },
     {

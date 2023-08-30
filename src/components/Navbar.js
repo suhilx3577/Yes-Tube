@@ -37,7 +37,7 @@ const Navbar = () => {
           </div>
 
           {/* LOGO */}
-          <div className='hidden lg:block'>
+          <div className='hidden md:block'>
             <Link to='/'>
               <ul onClick={()=>handleClick()}><img className='w-24 h-10 mix-blend-multiply' src={darkmodelogo} alt="" /></ul>
             </Link>
@@ -45,7 +45,7 @@ const Navbar = () => {
 
         </div>
         <SearchBar />
-        <div className=' hidden md:flex gap-5 text-2xl '>
+        <div className=' hidden lg:flex gap-5 text-2xl '>
           <BiVideoPlus className='w-10 h-10 p-2 hover:bg-slate-600 rounded-full'/>
           <AiOutlineBell className='w-10 h-10 p-2 hover:bg-slate-600 rounded-full' />
           <BiUserCircle className='w-10 h-10 p-2 hover:bg-slate-600 rounded-full'/>

@@ -7,7 +7,6 @@ import useFetchContainer from '../hooks/useFetchContainer'
 const FrontContainer = () => {
   
   const cdata = useSelector((state)=>state.container.cdata)
-
   useFetchContainer(cdata);
 
   return (

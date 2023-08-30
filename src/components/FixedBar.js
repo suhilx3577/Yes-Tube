@@ -4,13 +4,24 @@ import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import HomeIcon from '@mui/icons-material/Home';
 import RestoreIcon from '@mui/icons-material/Restore';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { changeContainer } from '../utils/containerSlice';
 
 const FixedBar = () => {
+  const dispatch = useDispatch();
+
+  function handleClick (item) {
+    if(item) {
+      dispatch(changeContainer(null))
+    }
+  }
 
   const iconsArray =[
     {
       name:'Home',
       icon:<HomeIcon/>,
+      link:'/',
     },
     {
       name:'Shorts',
@@ -35,7 +46,8 @@ const FixedBar = () => {
         <div className='flex text-white flex-col items-center gap-1'>
           {
             iconsArray.map((i,index)=>(
-              <div key={index} className='py-2 w-full h-full flex items-center justify-center flex-col hover:bg-slate-500 hover:cursor-pointer'>
+              <Link key={index} to={i?.link}>
+              <div onClick={()=>handleClick(i?.link)} className='py-2 w-full h-full flex items-center justify-center flex-col hover:bg-slate-500 hover:cursor-pointer'>
                 <span className='text-white text-3xl'>
                   {i.icon}
                 </span>
@@ -43,6 +55,7 @@ const FixedBar = () => {
                   {i.name}
                 </span>
               </div>
+              </Link>
             ))
           }
         </div>

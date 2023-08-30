@@ -18,7 +18,7 @@ const EachComment = ({ details }) => {
                         <span className='text-xs'>{time} ago</span>
                     </div>
                     <div className='mb-2'>
-                        <p className='text-sm mt-1 pr-2 font-semibold'> {snippet?.textDisplay}</p></div>
+                        <p className='text-sm mt-1 pr-8 font-semibold'> {snippet?.textDisplay.slice(0,100)}</p></div>
                     <div className='text-sm flex items-center gap-4'>
                         <div className='flex flex-row items-center gap-2'>
                             <AiFillLike />{snippet?.likeCount}

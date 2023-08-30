@@ -14,17 +14,17 @@ const Card = ({data,stats}) => {
             <div className=' w-[6vmax] h-[6vmax] lg:w-[3vw] lg:h-[3vw] bg-slate-800  rounded-full'>
                 <img src={data?.thumbnails?.default?.url} className='w-full h-full rounded-full' alt="" />
             </div>
-            <div className='p-1 w-full'>
+            <div className='p-1 w-full '>
                 <h1 className='h-10 w-[100%] text-sm  font-bold overflow-hidden'>
                     {data?.title}
                 </h1>
-                <p className='text-sm text-gray-300'>{data?.channelTitle}</p>
-                <span className='flex gap-2'>
+                <p className='text-sm font-semibold text-gray-300'>{data?.channelTitle}</p>
+                <span className='flex gap-2 text-xs'>
                 {
                     stats && 
-                    <p className='text-sm text-gray-300'>{Math.floor(stats?.likeCount/1000) +'K Likes'}</p>
+                    <p className=' text-gray-300'>{Math.floor(stats?.likeCount/1000) +'K Likes'}</p>
                 }
-                { pub && <p className='text-sm text-gray-300'>{pub +' ago'}</p> }
+                { pub && <p className=' text-gray-300'>{pub +' ago'}</p> }
                 </span>
             </div>
         </div>

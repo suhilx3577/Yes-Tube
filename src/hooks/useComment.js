@@ -7,7 +7,7 @@ export default function useComment (vid) {
     async function getCommentDetails(vid) {
         const d = await fetch(`https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.YOUTUBE_API_KEY}&textFormat=plainText&part=snippet%2Creplies&order=relevance&&videoId=${vid}&maxResults=50`)
         const data = await d.json();
-        setComment(data.items.slice(0,25));
+        setComment(data?.items?.slice(0,25));
     }
 
     useEffect(() => {

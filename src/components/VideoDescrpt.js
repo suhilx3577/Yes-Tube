@@ -23,9 +23,9 @@ const VideoDescrpt = () => {
   const viewCount = formatNumber(vDetails?.statistics?.viewCount)
 
   return (
-    <div className='flex flex-col gap-2 bg-slate-800 w-[44.5rem] mt-1 text-white'>
-        <h1 className='text-xl leading-2 font-semibold '>{vDetails?.snippet?.title}</h1>
-        <div className='flex flex-row justify-between py-2'>
+    <div className='flex flex-col gap-2 bg-slate-800 w-[90vw] xl:w-[55vw] mt-1 text-white'>
+        <h1 className='text-xl leading-2 font-semibold mt-3 lg:mt-1 '>{vDetails?.snippet?.title}</h1>
+        <div className='flex flex-row flex-wrap gap-4 justify-between py-2'>
             <div className='flex gap-2'>
                 <div className='w-10 h-10 rounded-full overflow-hidden flex items-center'>
                     <img src={channel?.snippet?.thumbnails?.default?.url} alt="" />

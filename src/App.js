@@ -8,7 +8,7 @@ import Watch from './components/Watch'
 
 const App = () => {
   return (
-    <div className='bg-slate-800'>
+    <div className='bg-slate-800 font-gilroy'>
         <Navbar/>
         <Outlet/>
         <Footer/>

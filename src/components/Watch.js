@@ -8,7 +8,7 @@ const Watch = () => {
       <div className='h-16'>
         Fixing Navbar 
       </div>
-      <div className='bg-slate-800 px-16 py-2 w-screen h-screen grid grid-cols-12'>
+      <div className=' w-screen h-screen bg-slate-800 px-6 lg:px-16 py-2 flex flex-row gap-5 items-center flex-wrap xl:grid grid-cols-12'>
         <MajorWatch/>
         <MinorWatch/>
       </div>
